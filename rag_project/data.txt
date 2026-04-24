@@ -1,0 +1,99 @@
+==================================================
+TECHNICAL KNOWLEDGE BASE - RAG SYSTEM CORPUS
+==================================================
+
+--- OPERATING SYSTEMS ---
+
+1. Process Management
+A process is an instance of a program in execution. The operating system manages processes using a Process Control Block (PCB) which stores the process ID, state, program counter, CPU registers, memory limits, and I/O status. Process states include: New, Ready, Running, Waiting, and Terminated. The OS scheduler decides which process runs using algorithms like First Come First Serve (FCFS), Shortest Job First (SJF), Round Robin, and Priority Scheduling.
+
+2. Threads and Concurrency
+A thread is the smallest unit of CPU execution within a process. Multithreading allows multiple threads to share the same process resources while executing independently. User-level threads are managed by thread libraries without kernel support, while kernel-level threads are managed by the operating system. Context switching between threads is faster than between processes because threads share the same address space. Synchronization issues like race conditions are handled with mutexes, semaphores, and monitors.
+
+3. Memory Management
+The OS provides virtual memory to each process, mapping virtual addresses to physical addresses using a page table. Paging divides memory into fixed-size pages; segmentation uses variable-length segments. Page replacement algorithms (LRU, FIFO, Optimal) decide which page to evict when memory is full. Thrashing occurs when excessive page faults slow down the system dramatically. The Translation Lookaside Buffer (TLB) caches recent page table entries to speed up address translation.
+
+4. Deadlocks
+A deadlock occurs when a set of processes are each waiting for resources held by the others, forming a circular wait. The four necessary conditions for deadlock are: mutual exclusion, hold and wait, no preemption, and circular wait. Deadlock handling strategies include: prevention (breaking one of the four conditions), avoidance (Banker's Algorithm), detection and recovery, and ignoring deadlocks. The Resource Allocation Graph (RAG) visually represents resource requests and assignments.
+
+5. File Systems
+A file system organizes and manages data on storage devices. Common file systems include FAT32, NTFS, ext4, and HFS+. File system operations include create, read, write, delete, open, close, seek, and append. Directories are hierarchical structures that contain file metadata. Inodes in Unix store file attributes like size, timestamps, and disk block locations. Free space management uses bit vectors or linked lists of free blocks.
+
+6. I/O Management
+The OS manages I/O using device drivers that abstract hardware details. I/O operations can be synchronous (blocking) or asynchronous (non-blocking). Direct Memory Access (DMA) allows I/O devices to transfer data to/from memory without CPU intervention. Buffering, caching, and spooling are techniques to optimize I/O performance. Interrupt-driven I/O notifies the CPU when I/O is complete, avoiding busy waiting.
+
+7. CPU Scheduling Algorithms
+CPU scheduling determines which process runs next on the CPU. First Come First Serve (FCFS) is non-preemptive and simple but can cause the convoy effect. Shortest Job First (SJF) minimizes average waiting time but requires knowing burst times in advance. Round Robin assigns a fixed time quantum to each process cyclically, ensuring fairness. Priority Scheduling runs the highest priority process first; preemptive versions can cause starvation. Multilevel Queue Scheduling categorizes processes into groups with different scheduling policies.
+
+--- DATABASE MANAGEMENT SYSTEMS ---
+
+8. Relational Model
+The relational model represents data as tables (relations) with rows (tuples) and columns (attributes). Each table has a primary key that uniquely identifies each row. Foreign keys establish relationships between tables. Normalization is the process of organizing tables to reduce redundancy: 1NF removes repeating groups, 2NF removes partial dependencies, 3NF removes transitive dependencies, and BCNF is a stricter version of 3NF.
+
+9. SQL and Query Processing
+SQL (Structured Query Language) is used to interact with relational databases. SELECT retrieves data, INSERT adds rows, UPDATE modifies rows, and DELETE removes rows. Joins combine data from multiple tables: INNER JOIN returns matching rows, LEFT JOIN returns all rows from the left table, and FULL OUTER JOIN returns all rows from both tables. Subqueries, aggregation functions (SUM, AVG, COUNT), and GROUP BY clauses enable complex data analysis.
+
+10. Transactions and ACID Properties
+A transaction is a sequence of operations that must execute atomically. ACID properties ensure data integrity: Atomicity (all or nothing), Consistency (valid state transitions), Isolation (concurrent transactions don't interfere), and Durability (committed changes persist). Transaction isolation levels include Read Uncommitted, Read Committed, Repeatable Read, and Serializable. Rollback restores the database to a previous state if a transaction fails.
+
+11. Indexing and Query Optimization
+Indexes speed up data retrieval by maintaining sorted data structures. A B-Tree index is balanced, supports range queries, and is widely used. A Hash index provides O(1) lookup but doesn't support range queries. The query optimizer generates an execution plan using statistics about table sizes and index selectivity. Execution plans can be analyzed using EXPLAIN to identify bottlenecks like full table scans.
+
+12. Concurrency Control
+Concurrency control ensures database correctness when multiple transactions execute simultaneously. Lock-based protocols use shared locks (read) and exclusive locks (write). Two-Phase Locking (2PL) guarantees serializability: the growing phase acquires locks, the shrinking phase releases them. Timestamp-based protocols assign timestamps to transactions and order them accordingly. Optimistic concurrency control validates transactions at commit time.
+
+13. NoSQL Databases
+NoSQL databases provide flexible schemas for unstructured and semi-structured data. Document stores (MongoDB) use JSON-like documents. Key-value stores (Redis) offer fast lookups by key. Column-family stores (Cassandra) organize data into column families for scalable reads. Graph databases (Neo4j) represent data as nodes and edges for relationship queries. The CAP theorem states that distributed systems can only guarantee two of: Consistency, Availability, and Partition tolerance.
+
+14. Database Recovery
+Recovery mechanisms restore the database to a consistent state after failures. Write-Ahead Logging (WAL) ensures all changes are logged before being applied. The ARIES recovery algorithm uses three phases: Analysis (find dirty pages), Redo (replay logged operations), and Undo (rollback incomplete transactions). Checkpoints periodically save the database state to limit recovery time. Database backups (full, incremental, differential) protect against catastrophic data loss.
+
+--- ARTIFICIAL INTELLIGENCE & MACHINE LEARNING ---
+
+15. Machine Learning Fundamentals
+Machine learning is a subfield of AI where models learn patterns from data. Supervised learning uses labeled examples to learn a mapping from input to output. Unsupervised learning finds patterns in unlabeled data through clustering and dimensionality reduction. Reinforcement learning trains agents to maximize reward through trial and error. The bias-variance tradeoff describes the balance between underfitting (high bias) and overfitting (high variance).
+
+16. Neural Networks
+Neural networks are computational models inspired by biological brains. A feedforward neural network consists of an input layer, hidden layers, and an output layer. Neurons apply an activation function (ReLU, Sigmoid, Tanh) to a weighted sum of inputs. Backpropagation computes gradients using the chain rule to update weights. Gradient descent minimizes the loss function by iteratively adjusting weights. Regularization techniques like dropout and L2 regularization prevent overfitting.
+
+17. Convolutional Neural Networks (CNNs)
+CNNs are specialized neural networks for processing grid-like data such as images. Convolutional layers apply filters to detect local patterns like edges and textures. Pooling layers (max pooling, average pooling) reduce spatial dimensions and add translation invariance. Batch normalization stabilizes training by normalizing layer inputs. Famous architectures include AlexNet, VGG, ResNet (with residual connections), and EfficientNet. CNNs are widely used in image classification, object detection, and segmentation.
+
+18. Recurrent Neural Networks and LSTMs
+Recurrent Neural Networks (RNNs) process sequential data by maintaining a hidden state. The vanishing gradient problem makes it hard for standard RNNs to learn long-range dependencies. Long Short-Term Memory (LSTM) networks use three gates (input, forget, output) and a cell state to selectively remember and forget information. Gated Recurrent Units (GRUs) simplify LSTMs with fewer parameters. Bidirectional RNNs process sequences in both directions for richer context.
+
+19. Transformer Architecture
+The Transformer architecture uses self-attention mechanisms to capture relationships between all tokens simultaneously. Multi-head attention allows the model to attend to different representation subspaces. Positional encoding adds sequence order information since attention is permutation-invariant. The encoder maps input sequences to representations; the decoder generates output sequences. Transformers power large language models like BERT, GPT, T5, and LLaMA. The attention mechanism computes queries (Q), keys (K), and values (V) to produce weighted representations.
+
+20. Large Language Models (LLMs)
+Large Language Models (LLMs) are transformer-based models trained on massive text corpora. Pre-training involves predicting masked tokens (BERT) or the next token (GPT). Fine-tuning adapts a pre-trained model to specific downstream tasks. Instruction tuning trains LLMs to follow human instructions. RLHF (Reinforcement Learning from Human Feedback) aligns LLM behavior with human preferences. LLMs can perform in-context learning without parameter updates by conditioning on examples in the prompt.
+
+21. Hallucination in LLMs
+LLM hallucination refers to the generation of factually incorrect, fabricated, or nonsensical content that appears plausible. Hallucinations arise because LLMs learn statistical patterns rather than grounded facts. Types include factual hallucinations (wrong facts), entity hallucinations (wrong names/dates), and reasoning hallucinations (faulty logic). Mitigation strategies include retrieval-augmented generation, fact verification, chain-of-thought prompting, and temperature reduction. Evaluating hallucination is challenging and requires specialized benchmarks like TruthfulQA and FEVER.
+
+22. Retrieval-Augmented Generation (RAG)
+Retrieval-Augmented Generation (RAG) combines a retrieval system with an LLM to produce factually grounded answers. The retrieval component finds relevant documents from a knowledge base using vector similarity. The generation component conditions the LLM on the retrieved context to produce an answer. RAG reduces hallucinations by providing the model with external factual grounding. The quality of retrieved context directly affects answer quality; low relevance scores indicate potential hallucination risk.
+
+23. Embeddings and Vector Search
+Text embeddings are dense vector representations that capture semantic meaning. Sentence-transformer models like all-MiniLM-L6-v2 produce high-quality sentence embeddings. Cosine similarity measures the angle between vectors; higher values indicate greater semantic similarity. FAISS (Facebook AI Similarity Search) enables efficient approximate nearest-neighbor search over large vector collections. Chroma is a vector database that provides persistent storage, metadata filtering, and built-in embedding functions. Embedding quality significantly impacts retrieval accuracy in RAG systems.
+
+24. Fine-Tuning and PEFT
+Fine-tuning adapts a pre-trained model to a specific task by updating its weights on task-specific data. Full fine-tuning updates all model parameters and is computationally expensive. Parameter-Efficient Fine-Tuning (PEFT) methods update only a small subset of parameters. LoRA (Low-Rank Adaptation) injects trainable low-rank matrices into attention layers, reducing trainable parameters by up to 10,000x. QLoRA combines LoRA with 4-bit quantization for CPU/memory-efficient training. The Hugging Face PEFT library simplifies LoRA and QLoRA integration with transformer models.
+
+25. Natural Language Processing Metrics
+BLEU (Bilingual Evaluation Understudy) measures n-gram overlap between generated and reference text; scores range from 0 to 1. ROUGE (Recall-Oriented Understudy for Gisting Evaluation) measures recall-oriented overlap; ROUGE-L considers longest common subsequences. Perplexity measures how well a language model predicts a held-out test set; lower is better. Exact match accuracy checks if the predicted answer exactly matches the reference. F1 score balances precision and recall at the token level, commonly used in QA evaluation.
+
+26. Attention Mechanisms
+The attention mechanism allows models to focus on relevant parts of the input when generating output. Scaled dot-product attention computes attention scores as softmax(QK^T / sqrt(d_k))V. Self-attention computes relationships within a single sequence. Cross-attention (used in encoder-decoder models) allows the decoder to attend to encoder outputs. Sparse attention (Longformer, BigBird) reduces quadratic complexity to linear for long sequences. Flash Attention optimizes memory access patterns to compute attention efficiently on GPUs.
+
+27. Vector Databases
+Vector databases store and index high-dimensional embeddings for efficient similarity search. FAISS supports multiple index types: Flat (exact search), IVF (inverted file, approximate), HNSW (hierarchical navigable small world graphs), and PQ (product quantization). Chroma is a developer-friendly vector database with Python and JavaScript clients, persistent storage, and built-in embedding functions. Pinecone and Weaviate are cloud-native vector databases for production-scale retrieval. Index type, dimensionality, and hardware affect search speed and accuracy tradeoffs.
+
+28. Chunking Strategies
+Text chunking divides documents into smaller pieces for embedding and retrieval. Fixed-size chunking splits text into chunks of a specified token count with optional overlap to preserve context. Sentence-based chunking splits at sentence boundaries to preserve semantic units. Recursive chunking uses hierarchical separators (paragraphs, sentences, words) to maintain coherence. Chunk size affects recall and precision: smaller chunks are more precise but may miss broader context; larger chunks capture more context but may reduce relevance scores.
+
+29. Prompt Engineering
+Prompt engineering designs input prompts to guide LLM behavior without changing model weights. Zero-shot prompting asks the model to perform a task with no examples. Few-shot prompting provides 1-10 labeled examples in the context. Chain-of-thought (CoT) prompting elicits step-by-step reasoning to improve performance on complex tasks. System prompts define the LLM's role and constraints for a conversation. Template-based prompting fills in a structured template with retrieved context and user questions.
+
+30. Model Quantization
+Quantization reduces model size and inference cost by representing weights in lower precision. INT8 quantization uses 8-bit integers instead of 32-bit floats, reducing memory by 4x with minimal accuracy loss. 4-bit quantization (used in GPTQ and BitsAndBytes) enables running 7B+ parameter models on consumer GPUs. Dynamic quantization quantizes weights at inference time; static quantization uses pre-computed scale factors. NF4 (Normal Float 4) is a data type optimized for quantizing normally distributed LLM weights in QLoRA.
